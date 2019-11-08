@@ -1,0 +1,120 @@
+/* 
+ * . for class 
+ * # for id
+ */
+
+/** General Styling **/
+
+body{
+    font-family: 'Trebuchet MS';
+    background-color: #e9edde;
+    color: #071a3d;
+    margin-left: 2%;
+}
+h1, h2,h3, h4, h5, h6{
+    font-family: 'Bookman Old Style';
+}
+.header #logo{
+    width: 320px;
+    height: 75px;
+    border: 2px solid #ba1200;
+}
+.header a{
+    color: #e9edde; 
+    text-decoration: none;
+}
+.header a:visited{
+    color: inherit; 
+    text-decoration: inherit;
+}
+.nav ul{
+    width: 95%;
+    background: #ba1200;
+    list-style: none;
+}
+.nav li{
+    color: #e9edde;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    font-size: 20pt;
+    width: 32%;
+    display: inline-block;  
+}
+.nav li:hover{
+    background: #369b9e;
+}
+.section{
+    position: absolute;
+    /*margin-right: 21%;*/
+}
+/*.aside{
+    position: fixed;
+    margin-left: 81%;
+    margin-right: 2.5%;
+    padding: 10px;
+    background-color: #970E00;
+    color: #e9edde;
+}*/
+/*.footer{
+    position: absolute;
+    bottom: 10px;
+    border-top-style: solid;
+    font-size: 10pt;
+}*/
+
+/** Order Page bag text and number of bags style **/
+
+#bagCanvas{
+    float: right;
+    margin-right: 30px;
+}
+#bagCanvas button{
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+    padding: 15px;
+    display: block;
+    font-family: courier;
+}
+#bagFormAndNumber button{
+    position: relative;
+    background-color: #ba1200;
+    border: none;
+    color: #e9edde;
+    padding: 15px;
+    text-align: center;
+    display: inline-block;
+    font-size: 120%;
+}
+#bagFormAndNumber{
+    position: absolute;
+    padding-left: 10px;
+    display: inline;
+}
+#bagFormAndNumber p{
+    font-size: 120%;
+}
+#bagTextForm{
+}
+#bagsField{
+    display: inline;
+}
+#bagNumber{
+    margin-top: 10px;
+}
+#bagFormAndNumber #ordering{
+    background: #369b9e;
+    margin-top: 10px;
+    font-size: 150%;
+}
+
+/** Contact Page styling **/
+#submitContact{
+    margin-top: 5px;
+    padding: 5px;
+    background-color: #ba1200;
+    border: none;
+    border-radius: 5px;
+    color: #e9edde;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bags'R'Us Contact</title>
+    <link rel="stylesheet" href="2716761Style.css" />
+    <script>
+        function contactMe() {
+            alert("Your message has been sent");
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <a href="index_2716761.html"><img id="logo" src="CSCU9B2ProjectLogoGrey.JPG" alt="Bags'R'Us Logo"></a>
+        <div class="nav">
+            <ul>
+                <a href="order.html"><li>Order</li></a>
+                <a href="contact.html"><li>Contact</li></a>
+                <a href="about.html"><li>About</li></a>
+            </ul>
+        </div>
+    </div>
+    
+    <h2>Contact us!</h2>
+    <p>We'd love to hear back from you or answer any of your questions!</p>
+    <form>
+        Your email address: <br>
+        <input required name="email" type="email" placeholder="Your email"><br>
+        Your message: <br>
+        <textarea required rows="6" placeholder="Your message here"></textarea><br>
+        <button id="submitContact" type="submit" value="Submit" onclick="contactMe()">Submit message</button>
+    </form>
+    
+    <!--<div class="footer">
+        <p>© Student 2716761 of the University of Stirling</p>
+    </div>-->
+</body>
+
+</html>

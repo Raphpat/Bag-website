@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bags'R'Us Order</title>
+    <link rel="stylesheet" href="2716761Style.css" />
+    <script>
+        
+        //Change the base bag cost at the bottom of the page.
+        
+        /**
+         * Updates the page based on the basic bag cost
+         * @param individualCost: base cost of a bag
+         **/
+        function setBasicCost(individualCost) {
+            var costPerBag = document.getElementById("costPerBag");
+            costPerBag.innerHTML = "Cost per bag: " + individualCost * 100 + "p";
+            calculateCost(100);
+        }
+        /**
+         * Calculates the cost of the order
+         * @param numberOfBags: number of bags currently selected
+         **/
+        function calculateCost(numberOfBags) {
+            var totalCost = individualCost * numberOfBags;
+            document.getElementById("cost").innerHTML = "Provisional Total: £" + totalCost +".00";
+        }
+        /**
+         * Subtracts 100 bags from the number of bags that will be ordered
+         * Recalculates cost
+         **/
+        function subtract100() {
+            var numberField = document.getElementById("bagsField");
+            var numberOfBags = parseInt(numberField.innerHTML);
+            if(numberOfBags > 100){
+                numberOfBags -= 100;
+                numberField.innerHTML = numberOfBags;
+                calculateCost(numberOfBags);
+            }
+        }
+        /**
+         * Adds 100 bags to the number of bags that will be ordered
+         * Recalculates cost
+         **/
+        function add100() {
+            var numberField = document.getElementById("bagsField");
+            var numberOfBags = parseInt(numberField.innerHTML);
+            numberOfBags += 100;
+            numberField.innerHTML = numberOfBags;
+            calculateCost(numberOfBags);
+        }
+        /**
+         * Places the order, including how many bags will be ordered
+         **/
+        function placeOrder() {
+            var numberField = document.getElementById("bagsField");
+            var numberOfBags = parseInt(numberField.innerHTML);
+            var totalCost = individualCost * numberOfBags;
+            window.alert("Your order for " + numberOfBags + " bags has successfully been placed." + getBagStats() + " The order will cost you £" + totalCost + ".00.");
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        //Quickly check the user isn't using IE because the website is completely incompatible
+        //Condition from https://stackoverflow.com/questions/24861073/detect-if-any-kind-of-ie-msie/24861307
+        if (navigator.appName == 'Microsoft Internet Explorer' ||  !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/)) || (typeof $.browser !== "undefined" && $.browser.msie == 1)) {
+            alert("For this page to work properly, please dont use Internet Explorer.");
+        }
+    </script>
+    <!-- Header -->
+    <div class="header">
+        <a href="index_2716761.html"><img id="logo" src="CSCU9B2ProjectLogoGrey.JPG" alt="Bags'R'Us Logo"></a>
+        <div class="nav">
+            <ul>
+                <a href="order.html"><li>Order</li></a>
+                <a href="contact.html"><li>Contact</li></a>
+                <a href="about.html"><li>About</li></a>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Canvas and colour buttons -->
+    <div id="bagCanvas">
+        <!-- Canvas for the bag -->
+        <canvas id="myCanvas" width="700" height="400" style="border:1px solid #111111;"></canvas>
+        <div id="bagColour">
+            <button style="right: 310px; top: 180px; color: #369b9e; background: #369b9e" type="button" onclick="setBagColour('#369b9e')">Turquoise_</button>
+            <button style="right: 190px; top: 180px; color: #ba1200; background: #ba1200" type="button" onclick="setBagColour('#ba1200')">Dark Red _</button>
+            <button style="right: 70px; top: 180px; color: #006938; background: #006938" type="button" onclick="setBagColour('#006938')">Dark Green</button>
+            <button style="right: 310px; top: 240px; color: #111111; background: #111111" type="button" onclick="setBagColour('#111111')">Black_ _ _</button>
+            <button style="right: 190px; top: 240px; color: #a0a08d; background: #a0a08d" type="button" onclick="setBagColour('#a0a08d')">Grey _ _ _</button>
+            <button style="right: 70px; top: 240px; color: #ffffff; background: #ffffff" type="button" onclick="setBagColour('#ffffff')">White_ _ _</button>
+        </div>
+        <div id="logoColour">
+            <button style="right: 310px; top: 380px; color: #369b9e; background: #369b9e" type="button" onclick="setTextColour('#369b9e')">Turquoise_</button>
+            <button style="right: 190px; top: 380px; color: #ba1200; background: #ba1200" type="button" onclick="setTextColour('#ba1200')">Dark Red _</button>
+            <button style="right: 70px; top: 380px; color: #006938; background: #006938" type="button" onclick="setTextColour('#006938')">Dark Green</button>
+            <button style="right: 310px; top: 440px; color: #111111; background: #111111" type="button" onclick="setTextColour('#111111')">Black_ _ _</button>
+            <button style="right: 190px; top: 440px; color: #a0a08d; background: #a0a08d" type="button" onclick="setTextColour('#a0a08d')">Grey _ _ _</button>
+            <button style="right: 70px; top: 440px; color: #ffffff; background: #ffffff" type="button" onclick="setTextColour('#ffffff')">White_ _ _</button>
+        </div>
+        <!-- Script that draws the bag and handles the buttons -->
+        <script src="shapes.js"></script>
+    </div>
+    
+    <!-- Bag text, number of bags and order placement -->
+    <div id="bagFormAndNumber">
+        <!-- Text that goes on the bags -->
+        <form id="bagTextForm">
+            <p>What text do you want on your bag?<br></p>
+            <input autofocus placeholder="Text for the bag" type="text" id="bagTextInput" maxlength="16">
+            <button style="margin-left: 20px" type="button" form="bagTextForm" value="Submit" onclick="submitForm()">Submit text</button>
+        </form>
+        <!-- Choice of number of bags -->
+        <div id="bagNumber">
+            <p>How many bags do you want?</p>
+            <button type="button" onclick="subtract100()">-100</button>
+            <p id="bagsField">100</p>
+            <button type="button" onclick="add100()">+100</button>
+        </div>
+        <p id="costPerBag"> </p>
+        <p id="cost"> </p>
+        <!-- Order Placement -->
+        <button id="ordering" type="button" onclick="placeOrder()">Place Order</button>
+    </div>
+        
+    <!--<div class="footer">
+        <p>© Student 2716761 of the University of Stirling</p>
+    </div>-->
+    
+    <script>
+        var individualCost = 0.03; //Where to change the base cost of the bags
+        setBasicCost(individualCost); //Updates page
+    </script>
+</body>
+
+</html>
